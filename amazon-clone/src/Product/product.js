@@ -1,7 +1,25 @@
 import React from 'react'
 import'./Product.css';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-const product = ({id,title,image,price,rating}) => {
+import { useStateValue } from '../StateProvider/StateProvider';
+
+function  Product ({id,title,image,price,rating}) {
+//to push to the datalayer
+const [{ basket},dispatch] = useStateValue();  
+console.log('this is basket',basket);  
+    const addToCart = () => {
+        dispatch({
+            type:'ADD_TO_CART',
+            item:{
+                id:id,
+                title:title,
+                image:image,
+                price:price,
+                rating:rating,
+            },
+        });
+        
+    };
     return (
         <div className='product'>
             <div className='product__info'>
@@ -21,9 +39,9 @@ const product = ({id,title,image,price,rating}) => {
 
             </div>
             <img src={image}/>
-            <button>Add to Cart</button>
+            <button onClick={addToCart}>Add to Cart</button>
         </div>
     )
 }
 
-export default product
+export default Product

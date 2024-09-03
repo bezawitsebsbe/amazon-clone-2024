@@ -34,6 +34,7 @@
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
     transition: background-color 0.3s ease;
+    padding: 3px 15px;
 }
 
 .product__price {
@@ -53,4 +54,5 @@
 .product>button:focus {
     background-color: #e6b800;
     /* lighter shade of yellow */
+    
 }
