@@ -7,9 +7,9 @@ function  Product ({id,title,image,price,rating}) {
 //to push to the datalayer
 const [{ basket},dispatch] = useStateValue();  
 console.log('this is basket',basket);  
-    const addToCart = () => {
+    const addToBasket = () => {
         dispatch({
-            type:'ADD_TO_CART',
+            type:'ADD_TO_BASKET',
             item:{
                 id:id,
                 title:title,
@@ -39,7 +39,7 @@ console.log('this is basket',basket);
 
             </div>
             <img src={image}/>
-            <button onClick={addToCart}>Add to Cart</button>
+            <button onClick={addToBasket}>Add to Cart</button>
         </div>
     )
 }
