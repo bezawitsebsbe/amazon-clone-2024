@@ -1,29 +1,48 @@
 import React, { useState } from 'react'
 import './Login.css'
-import { auth } from '../firebase';
-
+import { db,auth } from '../firebase';
+import { signInWithEmailAndPassword,createUserWithEmailAndPassword } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
     //password type sidereg change seleminor use hook
+    const navigate = useNavigate();
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState(''); 
-    const signIn = (e) => {
-        //to prevent the page from refreashing when submit
-        e.preventDefault();
-    };
-    const register = (e) =>{
-        e.preventDefault();
-        auth.createUserWithEmailAndPassword(email,password)
-        .then(auth=>console.log(auth))
-       
-        
+
+
+    const signIn =async (e) => {
+
+    e.preventDefault(); //to prevent the page from refreashing when submit
+    try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    navigate('/')
+    } catch (error) {
+        console.error('Error signing in user:', error); // Corrected error message for sign-in
     }
-  return (
+    };
+
+    const register = async (e) => {
+    e.preventDefault();
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        navigate('/');
+    } catch (error) {
+        console.error('Error creating user:', error); // Logs any errors
+    }
+
+};
+    
+    return (
     <div className='login'>
+        <Link to='/'>
         <img 
         className='login__logo'
         src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png'/>
+
+        </Link>
+        
         <div className='login__container'>
         <h1>Sign in</h1>
         <form>

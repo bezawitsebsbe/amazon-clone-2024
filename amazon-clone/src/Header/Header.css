@@ -77,3 +77,20 @@
     margin-right: 10px;
     color: white;
 }
+.header__option {
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 6px;
+    margin-right: 6px;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+
+.header__option:hover {
+    border: 1px solid white;
+}
+
