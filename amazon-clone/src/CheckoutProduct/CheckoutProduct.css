@@ -2,13 +2,14 @@
     display: flex;
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 500px;
+    width: 700px;
 }
 
 .checkoutProduct__image {
     object-fit: contain;
-    width: 180px;
+    width: 155px;
     height: 180px;
+    margin-left: 10px;
 }
 
 .checkoutProduct__info {
@@ -30,6 +31,7 @@
 }
 
 .checkoutProduct__rating {
+    color: #f0c14b;
     display: flex;
 }
 

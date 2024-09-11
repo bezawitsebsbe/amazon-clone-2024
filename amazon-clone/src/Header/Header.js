@@ -37,22 +37,24 @@ const Header = () => {
 
             </div>
             <div className='header__nav'>
-                <Link to={!user && '/login'}>
+                <Link to={!user && '/login'} className='header__clearlink'>
                 <div className='header__option' onClick={handleAuthentication}>
                     <span className='header__optionLineOne'>Hello {!user?'Guset':user?.email}</span>
                     <span className='header__optionLineTwo'>{user? 'Sign out':'Sign in'}</span>
                 </div>
                 </Link>
                 
+                <Link to='/orders' className='header__clearlink'>
                 <div className='header__option'>
                     <span className='header__optionLineOne'>Returns</span>
                     <span className='header__optionLineTwo'>$ Orders</span>
                 </div>
+                </Link>
                 <div className='header__option'>
                     <span className='header__optionLineOne'>Your</span>
                     <span className='header__optionLineTwo'>Prime</span>
                 </div>
-                <Link to='/Checkout'>
+                <Link to='/Checkout' className='header__clearlink'>
                     <div className='header__optionBasket'>
                     <ShoppingBasketIcon/> 
                 

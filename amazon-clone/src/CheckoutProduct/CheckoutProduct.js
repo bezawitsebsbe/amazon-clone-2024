@@ -3,7 +3,7 @@ import './CheckoutProduct.css'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useStateValue } from '../StateProvider/StateProvider';
 
-const CheckoutProduct = ({id,image,title,price,rating}) => {
+const CheckoutProduct = ({id,image,title,price,rating,hideButton}) => {
     const [{basket} , dispatch] = useStateValue();
     const removeFromBasket = () =>{
         dispatch({
@@ -13,6 +13,7 @@ const CheckoutProduct = ({id,image,title,price,rating}) => {
 
     };
   return (
+    <div className='checkout__left'>
     <div className='checkoutProduct'>
         <img className='checkoutProduct__image' src={image}/>
         <div className='checkoutProduct__info'>
@@ -34,10 +35,11 @@ const CheckoutProduct = ({id,image,title,price,rating}) => {
         .map((_, i) => (
             <p key={i}><StarBorderIcon /></p> // Return the star icon for each rating
         ))}
-</div>
-            <button className='checkoutProduct__removeButton' onClick={removeFromBasket}>Remove from basket</button>
+            </div>
+            {!hideButton && (<button className='checkoutProduct__removeButton' onClick={removeFromBasket}>Remove from basket</button>)}{''}
 {/* onClick={removeFromBasket} */}
         </div>
+    </div>
     </div>
   )
 }

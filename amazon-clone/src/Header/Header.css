@@ -93,4 +93,7 @@
 .header__option:hover {
     border: 1px solid white;
 }
+.header__clearlink{
+    text-decoration: none;
+}
 
