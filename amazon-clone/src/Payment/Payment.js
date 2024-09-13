@@ -114,55 +114,7 @@ const handleSubmit = async (event) => {
 };
 
 
-// *******
 
-
-// const handleSubmit = async (event) => {
-//     event.preventDefault();
-//     setProcessing(true);
-
-//     try {
-//         const cardElement = elements.getElement(CardElement);
-//         if (!cardElement) {
-//             throw new Error('Card element not found');
-//         }
-
-//         const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
-//             payment_method: {
-//                 card: cardElement,
-//             },
-//         });
-
-//         if (error) {
-//             // Handle error
-//             setError(error.message);
-//             console.error('Payment error:', error); // Log the entire error object for more details
-//             setProcessing(false);
-//         } else {
-//             // Payment succeeded
-//             await db.collection('users')
-//                 .doc(user?.uid)
-//                 .collection('orders')
-//                 .doc(paymentIntent.id)
-//                 .set({
-//                     basket: basket,
-//                     amount: paymentIntent.amount,
-//                     created: paymentIntent.created,
-//                 });
-
-//             setSucceeded(true);
-//             setError(null);
-//             setProcessing(false);
-//             dispatch({ type: 'EMPTY_BASKET' });
-//             navigate('/', { replace: true });
-//             console.log('Payment successful:', paymentIntent);
-//         }
-//     } catch (err) {
-//         console.error('Error confirming payment:', err);
-//         setError('An unexpected error occurred.');
-//         setProcessing(false);
-//     }
-// };
 
 
    const handleChange = (event) =>{
@@ -194,12 +146,17 @@ const handleSubmit = async (event) => {
                 </div>
                 <div className='payment_items'>
                     {basket.map((item) =>(
-                        <CheckoutProduct
+                        <div className='payment__checkout'>  
+                            <CheckoutProduct 
                         id={item.id}
                         title={item.title}
                         image={item.image}
                         price={item.price}
-                        rating={item.rating}/>
+                        rating={item.rating}
+                        
+            />
+                        </div>
+                      
                     ))}
                 </div>
             </div>
@@ -236,3 +193,4 @@ const handleSubmit = async (event) => {
 }
 
 export default Payment
+
